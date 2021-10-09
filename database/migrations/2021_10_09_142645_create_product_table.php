@@ -6,6 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class CreateProductTable extends Migration
 {
@@ -20,6 +21,7 @@ class CreateProductTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->string('slug');
             $table->char('size', 8);
             $table->decimal('price', 10,2);
             $table->integer('stock');
@@ -64,6 +66,7 @@ class CreateProductTable extends Migration
                 Product::create([
                     'name' => $coffee,
                     'description' => 'Lorem Ipsum',
+                    'slug' => Str::slug($coffee),
                     'size' => $size,
                     'price' => $price,
                     'stock' => 100,
@@ -75,6 +78,7 @@ class CreateProductTable extends Migration
             Product::create([
                 'name' => $food,
                 'description' => 'Lorem Ipsum',
+                'slug' => Str::slug($food),
                 'size' => Size::STANDARD,
                 'price' => 7.99,
                 'stock' => 100,

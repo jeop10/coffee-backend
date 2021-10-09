@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Product;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +23,6 @@ Route::get('/ping', function() {
    return 'All systems go';
 });
 
-Route::get('/products', function() {
-    $products = Product::all();
-    return $products->toJson();
-});
+Route::get('/products', [ProductsController::class, 'getAll']);
+Route::get('/products/best-selling', [ProductsController::class, 'getBestSelling']);
+Route::get('/products/{product}', [ProductsController::class, 'getProduct']);
