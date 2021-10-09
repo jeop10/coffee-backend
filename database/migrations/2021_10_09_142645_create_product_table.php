@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Product;
+use App\Models\Size;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,7 @@ class CreateProductTable extends Migration
         Product::create([
             'name' => 'Cappuccino',
             'description' => 'Lorem Ipsum',
-            'size' => 'SMALLSIZ',
+            'size' => Size::SMALL,
             'price' => 10.99,
             'stock' => 100,
         ]);
