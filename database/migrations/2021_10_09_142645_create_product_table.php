@@ -25,13 +25,61 @@ class CreateProductTable extends Migration
             $table->integer('stock');
         });
 
-        Product::create([
-            'name' => 'Cappuccino',
-            'description' => 'Lorem Ipsum',
-            'size' => Size::SMALL,
-            'price' => 10.99,
-            'stock' => 100,
-        ]);
+        $foods = [
+            'Cheese, Onion, Garlic Bagel',
+            'Plain Bagel',
+            'Butter Croissant',
+            'Blueberry Muffin',
+        ];
+
+        $coffees = [
+            'Cappuccino',
+            'Latte',
+            'Misto',
+            'Pumpkin',
+        ];
+
+        $coffee_sizes = [
+            Size::SMALL,
+            Size::MEDIUM,
+            Size::BIG
+        ];
+
+        foreach ($coffees as $coffee) {
+            foreach ($coffee_sizes as $size) {
+                $price = 0;
+
+                switch ($size) {
+                    case Size::SMALL:
+                        $price = 7.99;
+                        break;
+                    case Size::MEDIUM:
+                        $price = 8.99;
+                        break;
+                    case Size::BIG:
+                        $price = 10.99;
+                        break;
+                }
+
+                Product::create([
+                    'name' => $coffee,
+                    'description' => 'Lorem Ipsum',
+                    'size' => $size,
+                    'price' => $price,
+                    'stock' => 100,
+                ]);
+            }
+        }
+
+        foreach ($foods as $food) {
+            Product::create([
+                'name' => $food,
+                'description' => 'Lorem Ipsum',
+                'size' => Size::STANDARD,
+                'price' => 7.99,
+                'stock' => 100,
+            ]);
+        }
     }
 
     /**
