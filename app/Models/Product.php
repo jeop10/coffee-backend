@@ -11,6 +11,8 @@ class Product extends Model
 
     public $table = 'product';
 
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
